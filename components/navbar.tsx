@@ -21,7 +21,11 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ 
+        duration: 0.5, 
+        delay: 0.2,
+        ease: [0.25, 0.1, 0.25, 1] 
+      }}
       className="fixed top-0 left-0 right-0 z-50 bg-black"
     >
       <div className="container mx-auto px-6 py-6 flex items-center justify-between relative">
@@ -38,9 +42,13 @@ export function Navbar() {
           {navItems.map((item, index) => (
             <motion.div
               key={item.href}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ 
+                delay: 0.4 + index * 0.08,
+                duration: 0.5,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
             >
               <Link
                 href={item.href}

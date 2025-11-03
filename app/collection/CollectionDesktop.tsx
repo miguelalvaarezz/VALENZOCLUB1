@@ -17,19 +17,19 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         className="mb-40"
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center space-y-8"
         >
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] mb-6"
           >
             <span className="text-white block">THE</span>
@@ -47,10 +47,14 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
           {timeline.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: index * 0.3 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15,
+                ease: [0.25, 0.1, 0.25, 1] 
+              }}
               className="relative"
             >
               {/* Connecting Line */}
@@ -122,8 +126,21 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
       </section>
 
       {/* The Artwork - Mona Lisa Presentation */}
-      <section className="mb-40">
-        <div id="piece-section" className="text-center mb-20">
+      <motion.section 
+        className="mb-40"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <motion.div 
+          id="piece-section" 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-white mb-8 font-light">
             THE PIECE
           </p>
@@ -134,10 +151,14 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
           {collectionItems.map((item) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
+              transition={{ 
+                duration: 1,
+                delay: 0.4,
+                ease: [0.25, 0.1, 0.25, 1] 
+              }}
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
               className="relative group"

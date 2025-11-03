@@ -75,19 +75,19 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         className="mb-12"
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center space-y-6"
         >
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl font-bold leading-[0.9] mb-4"
           >
             <span className="text-white block">THE</span>
@@ -100,7 +100,12 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
       </motion.section>
 
       {/* Timeline Story - Carousel */}
-      <section className="mb-24 relative">
+      <motion.section 
+        className="mb-24 relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+      >
         <div className="relative h-[700px] overflow-hidden">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -208,8 +213,21 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
       </section>
 
       {/* The Artwork - Mona Lisa Presentation */}
-      <section className="mb-6">
-        <div id="piece-section" className="text-center mb-12">
+      <motion.section 
+        className="mb-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <motion.div 
+          id="piece-section" 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-white mb-6 font-light">
             THE PIECE
           </p>
