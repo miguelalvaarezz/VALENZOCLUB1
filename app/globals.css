@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 84%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 84%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 84%;
+    --primary: 33 23% 16%;
+    --primary-foreground: 0 0% 84%;
+    --secondary: 0 0% 84% 5%;
+    --secondary-foreground: 0 0% 84%;
+    --muted: 33 23% 16% 10%;
+    --muted-foreground: 0 0% 84% 65%;
+    --accent: 0 0% 84%;
+    --accent-foreground: 0 0% 6%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 33 23% 16% 20%;
+    --input: 33 23% 16% 10%;
+    --ring: 33 30% 25%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply backdrop-blur-sm bg-black/20 border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold to-gold-300 text-transparent bg-clip-text;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(33, 30%, 25%);
+  }
+
+  .glow-border {
+    @apply border border-gold/30 transition-all duration-300;
+  }
+
+  .glow-border:hover {
+    @apply border-gold/50;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(0, 0%, 6%) 0%,
+      hsl(33, 23%, 16%, 0.05) 50%,
+      hsl(0, 0%, 6%) 100%
+    );
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 10px hsl(33, 30%, 25%), 0 0 20px hsl(33, 30%, 25%, 0.5);
+  }
+}
+
