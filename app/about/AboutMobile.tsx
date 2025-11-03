@@ -88,7 +88,7 @@ export function AboutMobile({ hoveredItem, setHoveredItem }: AboutMobileProps) {
       >
         <div className="absolute inset-0">
           <img 
-            src="/images/revelation.jpg" 
+            src="/images/revelation.JPG" 
             alt="" 
             className="w-full h-full object-cover"
             style={{

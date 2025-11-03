@@ -16,7 +16,7 @@ export function Loading() {
         className="w-32 h-32"
       >
         <Image
-          src="/images/pcarga.png"
+          src="/images/pcarga.PNG"
           alt="Loading"
           width={128}
           height={128}

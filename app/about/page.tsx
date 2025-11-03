@@ -11,7 +11,7 @@ export default function AboutPage() {
       {/* Background Image */}
       <div className="absolute left-0 right-0 bottom-0 top-0 overflow-hidden">
         <img 
-          src="/images/revelation.jpg" 
+          src="/images/revelation.JPG" 
           alt="" 
           className="w-full h-full object-cover opacity-10 object-center"
           style={{
