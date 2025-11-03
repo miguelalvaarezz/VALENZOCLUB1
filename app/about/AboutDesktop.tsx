@@ -59,7 +59,7 @@ export function AboutDesktop({ hoveredItem, setHoveredItem }: AboutDesktopProps)
             </h2>
             <div className="h-px w-16 bg-gold/30" />
             <p className="text-base text-white/70 leading-relaxed font-light">
-              VALENZO CLUB nace de la cabeza de dos jóvenes que ven la repetición constante de 
+              VALENZO CLUB, nace de la cabeza de dos jóvenes que ven la repetición constante de 
               las prendas populares, como un problema en expansión. Esto le reduce el valor a 
               las prendas y el sentimiento de exclusividad en los individuos que las visten.
             </p>
@@ -68,7 +68,10 @@ export function AboutDesktop({ hoveredItem, setHoveredItem }: AboutDesktopProps)
               objetivo, <span className="text-white font-bold">la exclusividad de sus prendas y el sentimiento que estas accionan en 
               nuestra comunidad selecta de clientes.</span>
             </p>
-            <p className="text-base text-white/70 leading-relaxed font-light italic border-l-4 border-gold/30 rounded-l pl-4">
+            <p className="text-base text-white/70 leading-relaxed font-light italic border-l-[6px] border-gold/30 rounded-l-lg pl-4" style={{
+              borderTopLeftRadius: '8px',
+              borderBottomLeftRadius: '8px',
+            }}>
               This is not fashion. This is access. This is VALENZO CLUB.
             </p>
           </motion.div>

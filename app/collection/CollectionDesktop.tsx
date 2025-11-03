@@ -124,10 +124,10 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
       {/* The Artwork - Mona Lisa Presentation */}
       <section className="mb-40">
         <div id="piece-section" className="text-center mb-20">
-          <p className="text-xs uppercase tracking-[0.5em] text-gold/60 mb-8 font-light">
+          <p className="text-xs uppercase tracking-[0.5em] text-white mb-8 font-light">
             THE PIECE
           </p>
-          <div className="h-px w-24 bg-gold/20 mx-auto" />
+          <div className="h-px w-24 bg-white mx-auto" />
         </div>
 
         <div className="relative max-w-4xl mx-auto">
@@ -142,22 +142,38 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
               onMouseLeave={() => setHoveredItem(null)}
               className="relative group"
             >
-              {/* The Artwork - Museum Frame */}
-              <div className="relative aspect-[3/4] max-w-2xl mx-auto overflow-hidden rounded-lg">
-                {/* Double frame effect */}
-                <div className="absolute inset-0 border-2 border-gold/40 rounded-lg" />
-                <div className="absolute inset-4 border border-white/20 rounded-lg" />
+              {/* The Artwork - Luxury Museum Frame */}
+              <div className="relative aspect-[3/4] max-w-2xl mx-auto">
+                <div className="absolute" style={{ top: '-1rem', bottom: '-0.5rem', left: '-0.75rem', right: '-0.75rem' }}>
+                  <div className="absolute inset-0" style={{
+                    background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 20%, #1a1a1a 40%, #0a0a0a 60%, #1a1a1a 100%)',
+                    boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.8), inset 0 -2px 10px rgba(0,0,0,0.6), 0 0 30px rgba(0,0,0,0.5)',
+                  }} />
+                  <div className="absolute inset-1" style={{
+                    background: 'linear-gradient(135deg, rgba(45,45,45,0.9) 0%, rgba(26,26,26,0.8) 100%)',
+                    border: '1px solid rgba(100,100,100,0.2)',
+                  }} />
+                  <div className="absolute inset-2" style={{
+                    background: 'linear-gradient(135deg, #0a0a0a 0%, #2d2d2d 50%, #0a0a0a 100%)',
+                    borderTop: '1px solid rgba(100,100,100,0.3)',
+                    borderBottom: '1px solid rgba(0,0,0,0.8)',
+                  }} />
+                  <div className="absolute inset-3 border border-gold/20" style={{
+                    boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.5)',
+                  }} />
+                </div>
                 
-                {/* Image */}
-                <motion.img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover relative z-0"
-                  animate={{
-                    scale: hoveredItem === item.id ? 1.02 : 1,
-                  }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                />
+                <div className="relative aspect-[3/4] overflow-hidden m-3 rounded-sm">
+                  <motion.img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-top"
+                    animate={{
+                      scale: hoveredItem === item.id ? 1.02 : 1,
+                    }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                  />
+                </div>
               </div>
 
               {/* Plaque */}
@@ -166,16 +182,28 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8 }}
-                className="text-center mt-12"
+                className="text-center mt-14"
               >
                 <div>
-                  <p className="text-2xl font-bold text-white mb-1">
-                    MIDNIGHT VENOM
+                  <p className="text-xl font-bold mb-2">
+                    <span className="text-white">— </span>
+                    <span className="text-black bg-white px-2 py-1 rounded-sm">BLACK</span>
+                    <span className="text-white"> GENESIS —</span>
                   </p>
-                  <p className="text-xs text-white/30 font-light tracking-wide mb-4">
-                    Hooded Sweatshirt · Edition of 50
-                  </p>
-                  <p className="text-xl font-light text-white">$850</p>
+                  <div className="relative inline-flex flex-col items-center mb-6">
+                    <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+                    
+                    <div className="relative px-8 py-4">
+                      <p className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center">
+                        EXCLUSIVE EDITION
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <span className="text-4xl font-thin text-gold/80 tracking-tight">3</span>
+                        <span className="text-4xl font-thin text-white tracking-tight">/</span>
+                        <span className="text-4xl font-thin text-gold/80 tracking-tight">15</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

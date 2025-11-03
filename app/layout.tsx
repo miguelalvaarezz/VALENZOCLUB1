@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, Merriweather } from "next/font/google"
 import "./globals.css"
-import { MagneticCursor } from "@/components/magnetic-cursor"
 import { Providers } from "./providers"
 
 const inter = Inter({
