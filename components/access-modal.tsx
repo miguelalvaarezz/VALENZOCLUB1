@@ -105,7 +105,7 @@ export function AccessModal({ isOpen, onClose }: AccessModalProps) {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full"
+                      className="w-full text-base"
                     />
                   </div>
 
@@ -120,7 +120,7 @@ export function AccessModal({ isOpen, onClose }: AccessModalProps) {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full"
+                      className="w-full text-base"
                     />
                   </div>
 
@@ -135,7 +135,7 @@ export function AccessModal({ isOpen, onClose }: AccessModalProps) {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full resize-none"
+                      className="w-full resize-none text-base"
                     />
                   </div>
                 </div>
