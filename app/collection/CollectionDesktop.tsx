@@ -183,7 +183,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: blackGenesisInView ? 1 : 0, y: blackGenesisInView ? 0 : 20 }}
                 transition={{ duration: 0.8, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-xl font-bold mb-2"
+                className="text-xl font-bold mb-2 mt-4"
               >
                 <span className="text-white">— </span>
                 <span className="text-black bg-white px-2 py-1 rounded-sm">BLACK</span>
@@ -200,7 +200,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                     transition={{ duration: 0.8, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
                     className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center"
                   >
-                    EXCLUSIVE EDITION
+                    LIMITED EDITION
                   </motion.p>
                   <motion.div
                     ref={numbersRef}
@@ -209,7 +209,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                     transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
                     className="flex items-center gap-2"
                   >
-                    <span className="text-4xl font-thin text-gold/80 tracking-tight">3</span>
+                    <span className="text-4xl font-thin text-gold/80 tracking-tight">4</span>
                     <span className="text-4xl font-thin text-white tracking-tight">/</span>
                     <span className="text-4xl font-thin text-gold/80 tracking-tight">15</span>
                   </motion.div>
@@ -219,14 +219,27 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
           </motion.div>
 
           {/* Button */}
-          <motion.button
-            onClick={openModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 bg-gold text-black uppercase tracking-wider text-sm font-medium hover:bg-gold-100 transition-all duration-300 glow-border w-fit"
-          >
-            Request Access →
-          </motion.button>
+          <div className="flex flex-col items-start">
+            <div className="flex flex-col items-center">
+              <motion.button
+                onClick={openModal}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-12 py-4 bg-black text-white uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition-all duration-300 glow-border w-fit -mt-12 rounded-lg"
+              >
+                SOLICITAR COMPRA →
+              </motion.button>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: numbersInView ? 1 : 0, y: numbersInView ? 0 : 15 }}
+                transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-xs text-gold/60 font-light tracking-wide mt-4 flex items-center gap-2"
+              >
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Quedan 11 unidades
+              </motion.p>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>

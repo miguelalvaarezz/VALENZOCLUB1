@@ -283,7 +283,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
                 className="text-center mt-4"
               >
                 <div>
-                  <p className="text-xl font-bold mb-2">
+                  <p className="text-xl font-bold mb-2 mt-6">
                     <span className="text-white">— </span>
                     <span className="text-black bg-white px-2 py-1 rounded-sm">BLACK</span>
                     <span className="text-white"> GENESIS —</span>
@@ -293,10 +293,10 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
                     
                     <div className="relative px-8 py-4">
                       <p className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center">
-                        EXCLUSIVE EDITION
+                        LIMITED EDITION
                       </p>
                       <div className="flex items-center gap-2">
-                        <span className="text-4xl font-thin text-gold/80 tracking-tight">3</span>
+                        <span className="text-4xl font-thin text-gold/80 tracking-tight">4</span>
                         <span className="text-4xl font-thin text-white tracking-tight">/</span>
                         <span className="text-4xl font-thin text-gold/80 tracking-tight">15</span>
                       </div>
@@ -321,10 +321,14 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
           onClick={openModal}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="px-8 py-3 bg-gold text-black uppercase tracking-wider text-sm font-medium hover:bg-gold-100 transition-all duration-300 glow-border rounded-lg"
+          className="px-8 py-3 bg-black text-white uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition-all duration-300 glow-border rounded-lg -mt-12"
         >
-          Request Access →
+          SOLICITAR COMPRA →
         </motion.button>
+        <p className="text-xs text-gold/60 font-light tracking-wide mt-4 text-center flex items-center justify-center gap-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          Quedan 11 unidades
+        </p>
       </motion.section>
     </>
   )
