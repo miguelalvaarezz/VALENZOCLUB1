@@ -232,7 +232,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
             THE PIECE
           </p>
           <div className="h-px w-16 bg-white mx-auto" />
-        </div>
+        </motion.div>
 
         <div className="relative">
           {collectionItems.map((item) => (

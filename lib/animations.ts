@@ -31,9 +31,9 @@ export const ANIMATION_DURATIONS = {
 }
 
 export const ANIMATION_EASINGS = {
-  smooth: [0.4, 0, 0.2, 1], // ease-in-out cubic-bezier
-  elegant: [0.25, 0.1, 0.25, 1], // ease-out
-  bounce: [0.68, -0.55, 0.265, 1.55],
+  smooth: [0.4, 0, 0.2, 1] as const, // ease-in-out cubic-bezier
+  elegant: [0.25, 0.1, 0.25, 1] as const, // ease-out
+  bounce: [0.68, -0.55, 0.265, 1.55] as const,
 }
 
 // Variantes reutilizables

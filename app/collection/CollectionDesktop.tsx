@@ -145,7 +145,7 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
             THE PIECE
           </p>
           <div className="h-px w-24 bg-white mx-auto" />
-        </div>
+        </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
           {collectionItems.map((item) => (
