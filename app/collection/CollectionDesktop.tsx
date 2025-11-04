@@ -109,8 +109,14 @@ interface CollectionItemProps {
 function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: CollectionItemProps) {
   const ref = useRef(null)
   const plaqueRef = useRef(null)
+  const blackGenesisRef = useRef(null)
+  const exclusiveEditionRef = useRef(null)
+  const numbersRef = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
   const plaqueInView = useInView(plaqueRef, { once: true, margin: "-50px" })
+  const blackGenesisInView = useInView(blackGenesisRef, { once: true, margin: "-50px" })
+  const exclusiveEditionInView = useInView(exclusiveEditionRef, { once: true, margin: "-50px" })
+  const numbersInView = useInView(numbersRef, { once: true, margin: "-50px" })
 
   return (
     <motion.div
@@ -172,23 +178,41 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
             transition={{ delay: 0.8 }}
           >
             <div>
-              <p className="text-xl font-bold mb-2">
+              <motion.p
+                ref={blackGenesisRef}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: blackGenesisInView ? 1 : 0, y: blackGenesisInView ? 0 : 20 }}
+                transition={{ duration: 0.8, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-xl font-bold mb-2"
+              >
                 <span className="text-white">— </span>
                 <span className="text-black bg-white px-2 py-1 rounded-sm">BLACK</span>
                 <span className="text-white"> GENESIS —</span>
-              </p>
+              </motion.p>
               <div className="relative inline-flex flex-col items-center mb-6">
                 <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
                 
                 <div className="relative px-8 py-4">
-                  <p className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center">
+                  <motion.p
+                    ref={exclusiveEditionRef}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: exclusiveEditionInView ? 1 : 0, y: exclusiveEditionInView ? 0 : 15 }}
+                    transition={{ duration: 0.8, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center"
+                  >
                     EXCLUSIVE EDITION
-                  </p>
-                  <div className="flex items-center gap-2">
+                  </motion.p>
+                  <motion.div
+                    ref={numbersRef}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: numbersInView ? 1 : 0, y: numbersInView ? 0 : 15 }}
+                    transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="flex items-center gap-2"
+                  >
                     <span className="text-4xl font-thin text-gold/80 tracking-tight">3</span>
                     <span className="text-4xl font-thin text-white tracking-tight">/</span>
                     <span className="text-4xl font-thin text-gold/80 tracking-tight">15</span>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
