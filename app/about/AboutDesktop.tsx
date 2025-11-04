@@ -197,7 +197,7 @@ export function AboutDesktop({ hoveredItem, setHoveredItem }: AboutDesktopProps)
                 className="text-base text-white/70 leading-relaxed font-light text-justify"
               >
                 Es por ello, que se crea VALENZO, una empresa que tiene como único y principal 
-                objetivo, <span className="text-white font-bold">la exclusividad de sus prendas y el sentimiento que estas accionan en 
+                objetivo, <span className="text-white font-bold">la exclusividad de sus prendas y el sentimiento que estas inspiran en 
                 nuestra comunidad selecta de clientes.</span>
               </motion.p>
               <motion.p
