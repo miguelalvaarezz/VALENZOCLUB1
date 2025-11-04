@@ -196,11 +196,11 @@ export function Hero() {
               asChild
               variant="glow"
               size="lg"
-              className="group relative overflow-hidden"
+              className="group relative overflow-hidden text-white"
             >
               <Link href="/collection">
-                Join the Club
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                ACCESO EXCLUSIVO
+                <ArrowRight className="ml-2 h-5 w-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
           </motion.div>
