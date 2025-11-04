@@ -13,16 +13,12 @@ export function Hero() {
     const video = videoRef.current
     if (!video) return
     
-    // Force video properties for autoplay - MUST be set before anything else
+    // Set video properties for autoplay and loop
     video.muted = true
-    video.volume = 0
     video.loop = true
     video.playsInline = true
-    video.setAttribute('muted', 'true')
     video.setAttribute('playsinline', 'true')
     video.setAttribute('webkit-playsinline', 'true')
-    video.setAttribute('x5-playsinline', 'true')
-    video.removeAttribute('controls')
     
     // Handler for ended event to ensure loop
     const handleEnded = () => {
@@ -34,63 +30,47 @@ export function Hero() {
       }
     }
     
-    // Force play function - more aggressive
-    const forcePlay = async () => {
+    // Try to play immediately
+    const attemptPlay = () => {
       if (!video) return
-      try {
-        // Ensure muted before playing
-        video.muted = true
-        video.volume = 0
-        
-        const playPromise = video.play()
-        if (playPromise !== undefined) {
-          await playPromise
-        }
-      } catch (error) {
-        // If autoplay fails, try again immediately
-        setTimeout(() => {
-          if (video) {
-            video.muted = true
-            video.play().catch(() => {})
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If autoplay fails, try again when user interacts
+          const tryPlayOnInteraction = () => {
+            if (video) {
+              video.play().catch(() => {})
+            }
           }
-        }, 100)
+          document.addEventListener('click', tryPlayOnInteraction, { once: true, passive: true })
+          document.addEventListener('touchstart', tryPlayOnInteraction, { once: true, passive: true })
+        })
       }
     }
     
-    // Try to play immediately when video can play
-    const attemptPlay = () => {
-      if (!video) return
-      video.muted = true
-      forcePlay()
-    }
-    
-    // Try multiple events to catch video readiness
-    const events = ['loadeddata', 'canplay', 'canplaythrough', 'loadedmetadata']
-    events.forEach(event => {
-      video.addEventListener(event, attemptPlay, { once: true })
-    })
-    
-    // Also try immediately if video is already ready
+    // Try to play when video is ready
     if (video.readyState >= 2) {
       attemptPlay()
+    } else {
+      const loadedHandler = () => {
+        attemptPlay()
+        video.removeEventListener('loadeddata', loadedHandler)
+      }
+      const canPlayHandler = () => {
+        attemptPlay()
+        video.removeEventListener('canplay', canPlayHandler)
+      }
+      video.addEventListener('loadeddata', loadedHandler)
+      video.addEventListener('canplay', canPlayHandler)
     }
-    
-    // Fallback: try after a short delay
-    const timeoutId = setTimeout(() => {
-      attemptPlay()
-    }, 500)
     
     // Ensure loop works by handling ended event
     video.addEventListener('ended', handleEnded)
     
     return () => {
       if (video) {
-        events.forEach(event => {
-          video.removeEventListener(event, attemptPlay)
-        })
         video.removeEventListener('ended', handleEnded)
       }
-      clearTimeout(timeoutId)
     }
   }, [])
 
@@ -110,14 +90,8 @@ export function Hero() {
           muted
           playsInline
           preload="auto"
-          controls={false}
-          disablePictureInPicture
-          disableRemotePlayback
           className="w-full h-full object-cover opacity-30"
-          style={{ 
-            pointerEvents: 'none',
-            WebkitAppearance: 'none',
-          }}
+          style={{ pointerEvents: 'none' }}
         >
           <source src="/videos/heromovie.mp4" type="video/mp4" />
         </video>
