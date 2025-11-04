@@ -230,7 +230,7 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA */}
       <motion.section

@@ -210,7 +210,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
             {currentIndex < timeline.length - 1 ? 'Next →' : 'View The Piece →'}
           </motion.button>
         </motion.div>
-      </section>
+      </motion.section>
 
       {/* The Artwork - Mona Lisa Presentation */}
       <motion.section 
@@ -307,7 +307,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA */}
       <motion.section
