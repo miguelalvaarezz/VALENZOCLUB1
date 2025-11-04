@@ -77,5 +77,35 @@
   .text-shadow-glow {
     text-shadow: 0 0 10px hsl(33, 30%, 25%), 0 0 20px hsl(33, 30%, 25%, 0.5);
   }
+
+  /* Hide video controls completely */
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-play-button {
+    display: none !important;
+  }
+
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+  }
+
+  video::--webkit-media-controls-overlay-play-button {
+    display: none !important;
+  }
+
+  /* Hide controls in Firefox */
+  video::-moz-media-controls {
+    display: none !important;
+  }
 }
 
