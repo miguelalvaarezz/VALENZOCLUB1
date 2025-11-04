@@ -39,44 +39,61 @@ export function AboutDesktop({ hoveredItem, setHoveredItem }: AboutDesktopProps)
       </motion.section>
 
       {/* Story Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mb-32"
-      >
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-6"
+      <section className="mb-32">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-sm uppercase tracking-[0.3em] text-white mb-8 font-light"
           >
-            <h2 className="text-sm uppercase tracking-[0.3em] text-white mb-8 font-light">
-              THE STORY
-            </h2>
-            <div className="h-px w-16 bg-gold/30" />
-            <p className="text-base text-white/70 leading-relaxed font-light">
-              VALENZO CLUB, nace de la cabeza de dos jóvenes que ven la repetición constante de 
-              las prendas populares, como un problema en expansión. Esto le reduce el valor a 
-              las prendas y el sentimiento de exclusividad en los individuos que las visten.
-            </p>
-            <p className="text-base text-white/70 leading-relaxed font-light">
-              Es por ello, que se crea VALENZO, una empresa que tiene como único y principal 
-              objetivo, <span className="text-white font-bold">la exclusividad de sus prendas y el sentimiento que estas accionan en 
-              nuestra comunidad selecta de clientes.</span>
-            </p>
-            <p className="text-base text-white/70 leading-relaxed font-light italic border-l-[6px] border-gold/30 rounded-l-lg pl-4" style={{
+            THE STORY
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="h-px w-16 bg-gold/30 origin-left"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-base text-white/70 leading-relaxed font-light"
+          >
+            VALENZO CLUB, nace de la cabeza de dos jóvenes que ven la repetición constante de 
+            las prendas populares, como un problema en expansión. Esto le reduce el valor a 
+            las prendas y el sentimiento de exclusividad en los individuos que las visten.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-base text-white/70 leading-relaxed font-light"
+          >
+            Es por ello, que se crea VALENZO, una empresa que tiene como único y principal 
+            objetivo, <span className="text-white font-bold">la exclusividad de sus prendas y el sentimiento que estas accionan en 
+            nuestra comunidad selecta de clientes.</span>
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-base text-white/70 leading-relaxed font-light italic border-l-[6px] border-gold/30 rounded-l-lg pl-4"
+            style={{
               borderTopLeftRadius: '8px',
               borderBottomLeftRadius: '8px',
-            }}>
-              This is not fashion. This is access. This is VALENZO CLUB.
-            </p>
-          </motion.div>
+            }}
+          >
+            This is not fashion. This is access. This is VALENZO CLUB.
+          </motion.p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Values Section */}
       <motion.section
