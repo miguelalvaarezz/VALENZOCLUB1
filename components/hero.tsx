@@ -11,42 +11,65 @@ export function Hero() {
 
   useEffect(() => {
     const video = videoRef.current
-    if (video) {
-      // Set video properties for autoplay and loop
-      video.muted = true
-      video.loop = true
-      video.playsInline = true
-      
-      // Force video to play
-      const playPromise = video.play()
-      
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            // Video is playing
-            console.log("Video is playing")
-          })
-          .catch((error) => {
-            console.log("Video autoplay failed:", error)
-            // Retry after a short delay
-            setTimeout(() => {
-              video.play().catch((err) => {
-                console.log("Video autoplay retry failed:", err)
-              })
-            }, 500)
-          })
-      }
-      
-      // Ensure loop works by handling ended event
-      video.addEventListener('ended', () => {
+    if (!video) return
+    
+    // Set video properties for autoplay and loop
+    video.muted = true
+    video.loop = true
+    video.playsInline = true
+    video.setAttribute('playsinline', 'true')
+    video.setAttribute('webkit-playsinline', 'true')
+    
+    // Handler for ended event to ensure loop
+    const handleEnded = () => {
+      if (video) {
         video.currentTime = 0
-        video.play().catch((error) => {
-          console.log("Video loop failed:", error)
+        video.play().catch(() => {
+          // Silent fail for loop restart
         })
-      })
-      
-      return () => {
-        video.removeEventListener('ended', () => {})
+      }
+    }
+    
+    // Try to play immediately
+    const attemptPlay = () => {
+      if (!video) return
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If autoplay fails, try again when user interacts
+          const tryPlayOnInteraction = () => {
+            if (video) {
+              video.play().catch(() => {})
+            }
+          }
+          document.addEventListener('click', tryPlayOnInteraction, { once: true, passive: true })
+          document.addEventListener('touchstart', tryPlayOnInteraction, { once: true, passive: true })
+        })
+      }
+    }
+    
+    // Try to play when video is ready
+    if (video.readyState >= 2) {
+      attemptPlay()
+    } else {
+      const loadedHandler = () => {
+        attemptPlay()
+        video.removeEventListener('loadeddata', loadedHandler)
+      }
+      const canPlayHandler = () => {
+        attemptPlay()
+        video.removeEventListener('canplay', canPlayHandler)
+      }
+      video.addEventListener('loadeddata', loadedHandler)
+      video.addEventListener('canplay', canPlayHandler)
+    }
+    
+    // Ensure loop works by handling ended event
+    video.addEventListener('ended', handleEnded)
+    
+    return () => {
+      if (video) {
+        video.removeEventListener('ended', handleEnded)
       }
     }
   }, [])
@@ -66,7 +89,9 @@ export function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover opacity-30"
+          style={{ pointerEvents: 'none' }}
         >
           <source src="/videos/heromovie.mp4" type="video/mp4" />
         </video>
