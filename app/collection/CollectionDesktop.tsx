@@ -282,6 +282,14 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
           transition={{ delay: 0.3, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center space-y-8"
         >
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: heroTitleInView ? 1 : 0, y: heroTitleInView ? 0 : 20 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-xs text-white uppercase tracking-widest font-light mb-2"
+          >
+            001 | DROP
+          </motion.p>
           <motion.h1
             ref={heroTitleRef}
             initial={{ opacity: 0, y: 25 }}
