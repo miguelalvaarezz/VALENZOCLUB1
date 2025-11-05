@@ -222,7 +222,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                   >
                     <span className="text-4xl font-thin text-white tracking-tight">4</span>
                     <span className="text-4xl font-thin text-white tracking-tight">/</span>
-                    <span className="text-4xl font-thin text-white tracking-tight">15</span>
+                    <span className="text-4xl font-thin text-white tracking-tight">7</span>
                   </motion.div>
                 </div>
               </div>
