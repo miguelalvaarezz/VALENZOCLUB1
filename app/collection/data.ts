@@ -18,7 +18,7 @@ export const timeline = [
   {
     year: "02",
     title: "The Mastery",
-    text: "Horas y horas de diseño meticuloso. Cada hilo una declaración. Cada detalle una afirmación. Creado por maestros, para maestros.",
+    text: "Horas y horas de diseño meticuloso. Cada hilo una declaración. Cada detalle una afirmación. Creado por hustlers, para hustlers.",
     image: "/images/mastery.PNG",
   },
   {

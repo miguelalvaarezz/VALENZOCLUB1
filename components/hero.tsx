@@ -154,11 +154,11 @@ export function Hero() {
               ease: [0.25, 0.1, 0.25, 1] 
             }}
           >
-            <span className="text-white">VALENZO</span> <span className="gradient-text">CLUB</span>
+            <span className="text-white">VALENZO</span> <span className="text-black">CLUB</span>
           </motion.h1>
 
           <motion.p
-            className="text-sm md:text-base uppercase tracking-[0.3em] text-foreground/90 mb-4"
+            className="text-sm md:text-base uppercase tracking-[0.3em] text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -167,7 +167,7 @@ export function Hero() {
               ease: [0.25, 0.1, 0.25, 1] 
             }}
           >
-            — The night has a name —
+            — The money has a name —
           </motion.p>
 
           <motion.p

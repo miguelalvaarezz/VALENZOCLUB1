@@ -19,7 +19,7 @@ export default function AboutPage() {
         <img 
           src="/images/revelation.JPG" 
           alt="" 
-          className="w-full h-full object-cover opacity-25 object-center"
+          className="w-full h-full object-cover opacity-50 object-center"
           style={{
             filter: 'sepia(40%) contrast(1.2) brightness(0.7) saturate(0.8)',
           }}

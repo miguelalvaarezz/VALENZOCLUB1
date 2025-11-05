@@ -34,7 +34,7 @@ function TimelineItem({ item, index, isLast }: TimelineItemProps) {
     >
       {/* Connecting Line */}
       {!isLast && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-full w-px h-32 bg-gradient-to-b from-gold/20 via-gold/10 to-transparent" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-full w-px h-32 bg-gradient-to-b from-black/20 via-black/10 to-transparent" />
       )}
 
       {/* 3D Box Effect */}
@@ -42,24 +42,30 @@ function TimelineItem({ item, index, isLast }: TimelineItemProps) {
         <motion.div
           whileHover={{ rotateX: 2, rotateY: -2 }}
           transition={{ duration: 0.5 }}
-          className="transform-gpu bg-black/20 backdrop-blur-sm border border-gold/20 p-12 shadow-[0_8px_32px_0_rgba(33,23,16,0.3)] relative overflow-hidden rounded-lg"
+          className="transform-gpu bg-black/20 backdrop-blur-sm border border-black/20 p-12 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden rounded-lg"
         >
           {/* Inner glow */}
-          <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-transparent pointer-events-none" />
           
           <div className="grid grid-cols-2 gap-12 items-center relative z-10">
             {/* Content */}
             <div className={`space-y-6 ${index % 2 === 1 ? 'order-2' : ''}`}>
               <div className="flex items-center gap-4">
-                <div className="w-32 h-px bg-gold/20" />
-                <span className="text-xs text-gold font-light tracking-widest">
+                <div className="w-32 h-px bg-black/20" />
+                <span className="text-[10px] text-black font-light tracking-[0.3em] uppercase">
                   {item.year}
                 </span>
               </div>
-              <h2 className="text-4xl font-bold text-white leading-tight">
-                {item.title}
+              <h2 className="text-5xl font-bold text-white leading-tight tracking-tight uppercase">
+                {item.title.split(' ').map((word, idx) => 
+                  word.toLowerCase() === 'the' ? (
+                    <span key={idx}>{word} </span>
+                  ) : (
+                    <span key={idx} className="text-black">{word} </span>
+                  )
+                )}
               </h2>
-              <p className="text-white/60 leading-relaxed text-lg font-light">
+              <p className="text-white/70 leading-relaxed text-lg font-light tracking-wide">
                 {item.text}
               </p>
             </div>
@@ -68,7 +74,7 @@ function TimelineItem({ item, index, isLast }: TimelineItemProps) {
             <div className={`relative ${index % 2 === 1 ? 'order-1' : ''}`}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                 {/* Frame effect */}
-                <div className="absolute inset-0 border border-gold/30 rounded-lg" />
+                <div className="absolute inset-0 border border-black/30 rounded-lg" />
                 <div className="absolute inset-2 border border-white/10 rounded-lg" />
                 
                 {/* Image */}
@@ -77,13 +83,18 @@ function TimelineItem({ item, index, isLast }: TimelineItemProps) {
                   alt={item.title}
                   className={`w-full h-full object-cover relative z-0 ${index === 0 ? 'object-center' : 'object-bottom'}`}
                   style={{
-                    filter: 'sepia(40%) contrast(1.2) brightness(0.7) saturate(0.8)',
+                    filter: index === 0
+                      ? 'sepia(40%) contrast(1.2) brightness(0.5) saturate(0.8)'
+                      : 'sepia(40%) contrast(1.2) brightness(0.7) saturate(0.8)',
                   }}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6 }}
                 />
                 
                 {/* Overlay gradient */}
+                {index === 0 && (
+                  <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent pointer-events-none" />
                 {/* Retro film grain effect */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
@@ -150,7 +161,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
               borderTop: '1px solid rgba(100,100,100,0.3)',
               borderBottom: '1px solid rgba(0,0,0,0.8)',
             }} />
-            <div className="absolute inset-3 border border-gold/20" style={{
+            <div className="absolute inset-3 border border-black/20" style={{
               boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.5)',
             }} />
           </div>
@@ -186,11 +197,11 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                 className="text-xl font-bold mb-2 mt-4"
               >
                 <span className="text-white">— </span>
-                <span className="text-black bg-white px-2 py-1 rounded-sm">BLACK</span>
+                <span className="text-white bg-black px-2 py-1 rounded-sm">BLACK</span>
                 <span className="text-white"> GENESIS —</span>
               </motion.p>
               <div className="relative inline-flex flex-col items-center mb-6">
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black to-transparent" />
                 
                 <div className="relative px-8 py-4">
                   <motion.p
@@ -198,7 +209,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: exclusiveEditionInView ? 1 : 0, y: exclusiveEditionInView ? 0 : 15 }}
                     transition={{ duration: 0.8, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="text-[10px] text-gold/80 font-light tracking-[0.3em] mb-3 text-center"
+                    className="text-[10px] text-white font-light tracking-[0.3em] mb-3 text-center"
                   >
                     LIMITED EDITION
                   </motion.p>
@@ -209,9 +220,9 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                     transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
                     className="flex items-center gap-2"
                   >
-                    <span className="text-4xl font-thin text-gold/80 tracking-tight">4</span>
+                    <span className="text-4xl font-thin text-white tracking-tight">4</span>
                     <span className="text-4xl font-thin text-white tracking-tight">/</span>
-                    <span className="text-4xl font-thin text-gold/80 tracking-tight">15</span>
+                    <span className="text-4xl font-thin text-white tracking-tight">15</span>
                   </motion.div>
                 </div>
               </div>
@@ -233,7 +244,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: numbersInView ? 1 : 0, y: numbersInView ? 0 : 15 }}
                 transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-xs text-gold/60 font-light tracking-wide mt-4 flex items-center gap-2"
+                className="text-xs text-white font-light tracking-wide mt-4 flex items-center gap-2"
               >
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 Quedan 11 unidades
@@ -256,6 +267,7 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
   const heroSubtitleRef = useRef(null)
   const pieceSectionRef = useRef(null)
   const pieceTitleRef = useRef(null)
+  const processTitleRef = useRef(null)
 
   // useInView hooks
   const heroSectionInView = useInView(heroSectionRef, { once: true, margin: "-50px" })
@@ -264,6 +276,7 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
   const heroSubtitleInView = useInView(heroSubtitleRef, { once: true, margin: "-50px" })
   const pieceSectionInView = useInView(pieceSectionRef, { once: true, margin: "-50px" })
   const pieceTitleInView = useInView(pieceTitleRef, { once: true, margin: "-50px" })
+  const processTitleInView = useInView(processTitleRef, { once: true })
 
   return (
     <>
@@ -298,33 +311,19 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
             className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] mb-6"
           >
             <span className="text-white block">THE</span>
-            <span className="gradient-text block">FOUNDATION</span>
+            <span className="text-black block">FOUNDATION</span>
           </motion.h1>
           <motion.p
             ref={heroSubtitleRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: heroSubtitleInView ? 1 : 0, y: heroSubtitleInView ? 0 : 20 }}
             transition={{ delay: 0.7, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-xs text-gold-300 uppercase tracking-widest font-light"
+            className="text-xs text-white uppercase tracking-widest font-light"
           >
             "Future belongs to the few"
           </motion.p>
         </motion.div>
       </motion.section>
-
-      {/* Timeline Story - Connected Journey */}
-      <section className="mb-40 relative">
-        <div className="space-y-32">
-          {timeline.map((item, index) => (
-            <TimelineItem
-              key={index}
-              item={item}
-              index={index}
-              isLast={index === timeline.length - 1}
-            />
-          ))}
-        </div>
-      </section>
 
       {/* The Artwork - Mona Lisa Presentation */}
       <motion.section 
@@ -342,10 +341,10 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
           animate={{ opacity: pieceTitleInView ? 1 : 0, y: pieceTitleInView ? 0 : 20 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <p className="text-xs uppercase tracking-[0.5em] text-black mb-8 font-light">
+          <p className="text-xs uppercase tracking-[0.5em] text-white mb-8 font-light">
             THE PIECE
           </p>
-          <div className="h-px w-24 bg-black mx-auto" />
+          <div className="h-px w-24 bg-white mx-auto" />
         </motion.div>
 
         <div className="relative max-w-6xl mx-auto">
@@ -360,6 +359,34 @@ export function CollectionDesktop({ hoveredItem, setHoveredItem }: CollectionDes
           ))}
         </div>
       </motion.section>
+
+      {/* The Piece Title - Duplicate */}
+      <motion.div 
+        ref={processTitleRef}
+        className="text-center mb-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: processTitleInView ? 1 : 0, y: processTitleInView ? 0 : 20 }}
+        transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <p className="text-xs uppercase tracking-[0.5em] text-white mb-8 font-light">
+          THE PROCESS
+        </p>
+        <div className="h-px w-24 bg-white mx-auto" />
+      </motion.div>
+
+      {/* Timeline Story - Connected Journey */}
+      <section className="mb-40 relative">
+        <div className="space-y-32">
+          {timeline.map((item, index) => (
+            <TimelineItem
+              key={index}
+              item={item}
+              index={index}
+              isLast={index === timeline.length - 1}
+            />
+          ))}
+        </div>
+      </section>
 
     </>
   )

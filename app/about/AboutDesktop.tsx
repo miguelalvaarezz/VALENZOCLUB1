@@ -121,16 +121,16 @@ export function AboutDesktop({ hoveredItem, setHoveredItem }: AboutDesktopProps)
             transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-5xl md:text-7xl font-bold leading-tight mb-8"
           >
-            <span className="text-white">VALENZO</span>
+            <span className="text-black">VALENZO</span>
           </motion.h1>
           <motion.p
             ref={heroSubtitleRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: heroSubtitleInView ? 1 : 0, y: heroSubtitleInView ? 0 : 20 }}
             transition={{ delay: 0.7, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-xs text-gold-300 uppercase tracking-widest font-light"
+            className="text-xs text-white uppercase tracking-widest font-light"
           >
-            "The night has a name"
+            "The money has a name"
           </motion.p>
         </motion.div>
       </motion.section>

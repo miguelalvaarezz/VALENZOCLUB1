@@ -30,9 +30,11 @@ export function Footer() {
             }}
             className="space-y-4 text-center"
           >
-            <h3 className="text-2xl font-bold gradient-text">VALENZO CLUB</h3>
-            <p className="text-sm text-foreground/60">
-              The night has a name. Access granted to the elite.
+            <h3 className="text-sm md:text-base uppercase tracking-[0.3em] text-white">
+              <span className="text-white">VALENZO</span> <span className="gradient-text">CLUB</span>
+            </h3>
+            <p className="text-sm text-white">
+              The money has a name. <span className="block md:inline">Access granted to the elite.</span>
             </p>
             <div className="flex gap-4 justify-center">
               {socialLinks.map((social, index) => {

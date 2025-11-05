@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Logo } from "@/components/logo"
 import { usePathname } from "next/navigation"
 
@@ -14,8 +14,20 @@ const navItems = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
+  const isCollectionPage = pathname === "/collection"
+  const isAboutPage = pathname === "/about"
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <motion.nav
@@ -26,7 +38,11 @@ export function Navbar() {
         delay: 0.2,
         ease: [0.25, 0.1, 0.25, 1] 
       }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        isCollectionPage || isAboutPage
+          ? (isScrolled ? 'bg-black' : 'bg-transparent')
+          : 'bg-black'
+      }`}
     >
       <div className="container mx-auto px-6 py-6 flex items-center justify-between relative">
         {/* Spacer for mobile to balance layout */}
