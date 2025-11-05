@@ -247,7 +247,7 @@ function CollectionItem({ item, hoveredItem, setHoveredItem, openModal }: Collec
                 className="text-xs text-white font-light tracking-wide mt-4 flex items-center gap-2"
               >
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                Quedan 11 unidades
+                Quedan 3 unidades
               </motion.p>
             </div>
           </div>
