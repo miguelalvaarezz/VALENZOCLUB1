@@ -18,7 +18,7 @@ export default function CollectionPage() {
         }}
       >
         <img 
-          src="/images/IMG_0083.jpg" 
+          src="/images/IMG_0083.JPG" 
           alt="" 
           className="w-full h-full opacity-35 object-top md:object-center"
           style={{
