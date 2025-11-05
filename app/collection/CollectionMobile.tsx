@@ -209,7 +209,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
                       <div className="flex items-center gap-2">
                         <span className="text-4xl font-thin text-white tracking-tight">4</span>
                         <span className="text-4xl font-thin text-white tracking-tight">/</span>
-                        <span className="text-4xl font-thin text-white tracking-tight">15</span>
+                        <span className="text-4xl font-thin text-white tracking-tight">7</span>
                       </div>
                     </div>
                   </div>
@@ -237,7 +237,7 @@ export function CollectionMobile({ hoveredItem, setHoveredItem }: CollectionMobi
         </motion.button>
           <p className="text-xs text-white font-light tracking-wide mt-4 text-center flex items-center justify-center gap-2">
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-          Quedan 11 unidades
+          Quedan 3 unidades
         </p>
         </motion.div>
       </motion.section>
