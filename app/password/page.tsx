@@ -6,7 +6,7 @@ import { PasswordDesktop } from "./PasswordDesktop"
 import { PasswordMobile } from "./PasswordMobile"
 import { SubmissionStatus, TimeLeft } from "./types"
 
-const TARGET_DATE_ISO = "2025-11-13T20:00:00-01:00"
+const TARGET_DATE_ISO = "2025-11-14T20:00:00-01:00"
 
 export default function PasswordPage() {
   const isMobile = useMediaQuery("(max-width: 767px)")
